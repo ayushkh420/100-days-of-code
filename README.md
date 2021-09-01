@@ -2,4 +2,4 @@
 My continuous 100 days of code challenge using c++ language.
 
 
-DSA
+Data structure and algorithm
