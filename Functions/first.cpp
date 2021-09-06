@@ -1,4 +1,5 @@
- // printing of all prime numbers between 2 given numbers.
+// printing of all prime numbers between 2 given numbers.
+
 
 #include<iostream>
 #include<math.h>
