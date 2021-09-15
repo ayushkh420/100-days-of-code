@@ -4,7 +4,7 @@
 using namespace std;
 
 int main(){
-    string str ="asmifvfnsffs";
+    string str ="asmifvfnsfffedfs";
     // convert into upper case string
 
     for (int i = 0; i < str.size(); i++)
