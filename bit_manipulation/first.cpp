@@ -17,6 +17,7 @@ int clearbit(int n, int pos){
 }
 
 int main(){
+    // cout<<getbit(5,2);
     // cout<<setbit(5,1);
     cout<<clearbit(5,2);
     return 0;
