@@ -90,10 +90,7 @@ int main()
 	int m = 3; // Number of colors
 
 		
-	// Create a vector of n+1
-	// nodes of type "node"
-	// The zeroth position is just
-	// dummy (1 to n to be used)
+	
 	vector<node> nodes(n + 1);
 
 	// Add edges to each node as per given input

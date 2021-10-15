@@ -118,12 +118,7 @@ void printSolution(int path[])
 // Driver Code
 int main()
 {
-	/* Let us create the following graph
-		(0)--(1)--(2)
-		| / \ |
-		| / \ |
-		| / \ |
-		(3)-------(4) */
+	
 	bool graph1[V][V] = {{0, 1, 0, 1, 0},
 						{1, 0, 1, 1, 1},
 						{0, 1, 0, 0, 1},
@@ -133,19 +128,14 @@ int main()
 	// Print the solution
 	hamCycle(graph1);
 	
-	/* Let us create the following graph
-	(0)--(1)--(2)
-	| / \ |
-	| / \ |
-	| / \ |
-	(3) (4) */
+	
 	bool graph2[V][V] = {{0, 1, 0, 1, 0},
 						{1, 0, 1, 1, 1},
 						{0, 1, 0, 0, 1},
 						{1, 1, 0, 0, 0},
 						{0, 1, 1, 0, 0}};
 
-	// Print the solution
+
 	hamCycle(graph2);
 
 	return 0;
