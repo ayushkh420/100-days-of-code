@@ -37,8 +37,7 @@ int canPaint(vector<node>& nodes, int n, int m)
 		visited[sv] = 1;
 		queue<int> q;
 		q.push(sv);
-
-		// BFS Travel starts here
+		
 		while (!q.empty())
 		{
 
