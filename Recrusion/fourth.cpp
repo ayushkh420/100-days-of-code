@@ -21,9 +21,6 @@ tower(n - 1, sourcePole, auxiliaryPole,
 cout << "Move the disk "<< n << " from " <<
 	sourcePole <<" to "<< destinationPole << endl;
 
-// Move the n-1 disks from auxiliary (now source)
-// pole to destination pole using source pole as
-// temporary (auxiliary) pole
 tower(n - 1, auxiliaryPole, destinationPole,
 	sourcePole);
 }
