@@ -3,15 +3,10 @@ Cycle problem using backtracking */
 #include <bits/stdc++.h>
 using namespace std;
 
-// Number of vertices in the graph
 #define V 5
 
 void printSolution(int path[]);
 
-/* A utility function to check if
-the vertex v can be added at index 'pos'
-in the Hamiltonian Cycle constructed
-so far (stored in 'path[]') */
 bool isSafe(int v, bool graph[V][V],
 			int path[], int pos)
 {
@@ -20,27 +15,19 @@ bool isSafe(int v, bool graph[V][V],
 	if (graph [path[pos - 1]][ v ] == 0)
 		return false;
 
-	/* Check if the vertex has already been included.
-	This step can be optimized by creating
-	an array of size V */
 	for (int i = 0; i < pos; i++)
 		if (path[i] == v)
 			return false;
 
 	return true;
 }
-
-/* A recursive utility function
-to solve hamiltonian cycle problem */
 bool hamCycleUtil(bool graph[V][V],
 				int path[], int pos)
 {
-	/* base case: If all vertices are
-	included in Hamiltonian Cycle */
+
 	if (pos == V)
 	{
-		// And if there is an edge from the
-		// last included vertex to the first vertex
+		
 		if (graph[path[pos - 1]][path[0]] == 1)
 			return true;
 		else
@@ -49,25 +36,18 @@ bool hamCycleUtil(bool graph[V][V],
 
 	for (int v = 1; v < V; v++)
 	{
-		/* Check if this vertex can be added
-		// to Hamiltonian Cycle */
 		if (isSafe(v, graph, path, pos))
 		{
 			path[pos] = v;
 
-			/* recur to construct rest of the path */
+			
 			if (hamCycleUtil (graph, path, pos + 1) == true)
 				return true;
 
-			/* If adding vertex v doesn't lead to a solution,
-			then remove it */
+			
 			path[pos] = -1;
 		}
 	}
-
-	/* If no vertex can be added to
-	Hamiltonian Cycle constructed so far,
-	then return false */
 	return false;
 }
 
