@@ -1,114 +1,85 @@
-// CPP program for the above approach
-#include <bits/stdc++.h>
+// rat maze problem
+
 #include <iostream>
 using namespace std;
 
-class node
+bool isSafe(int **arr, int x, int y, int n)
 {
-
-	// A node class which stores the color and the edges
-	// connected to the node
-public:
-	int color = 1;
-	set<int> edges;
-};
-
-int canPaint(vector<node>& nodes, int n, int m)
+	if (x < n && y < n && arr[x][y] == 1)
+	{
+		return false;
+	}
+	else
+	{
+		return false;
+	}
+}
+bool ratinMaze(int **arr, int x, int y, int n, int **Solarr)
 {
-
-	// Create a visited array of n
-	// nodes, initialized to zero
-	vector<int> visited(n + 1, 0);
-
-	// maxColors used till now are 1 as
-	// all nodes are painted color 1
-	int maxColors = 1;
-
-	// Do a full BFS traversal from
-	// all unvisited starting points
-	for (int sv = 1; sv <= n; sv++)
+	if (x==n-1 && y==n-1)
 	{
 
-		if (visited[sv])
-			continue;
-
-		// If the starting point is unvisited,
-		// mark it visited and push it in queue
-		visited[sv] = 1;
-		queue<int> q;
-		q.push(sv);
-		
-		while (!q.empty())
-		{
-
-			int top = q.front();
-			q.pop();
-
-			// Checking all adjacent nodes
-			// to "top" edge in our queue
-			for (auto it = nodes[top].edges.begin();
-				it != nodes[top].edges.end(); it++)
-			{
-
-				// IMPORTANT: If the color of the
-				// adjacent node is same, increase it by 1
-				if (nodes[top].color == nodes[*it].color)
-					nodes[*it].color += 1;
-
-				// If number of colors used shoots m, return
-				// 0
-				maxColors
-					= max(maxColors, max(nodes[top].color,
-										nodes[*it].color));
-				if (maxColors > m)
-					return 0;
-
-				// If the adjacent node is not visited,
-				// mark it visited and push it in queue
-				if (!visited[*it]) {
-					visited[*it] = 1;
-					q.push(*it);
-				}
-			}
-		}
+		Solarr[x][y] = 1;
+		return true;
 	}
-
-	return 1;
+	
+	if (isSafe(arr, x, y, n))
+	{
+		Solarr[x][y] = 1;
+		if (ratinMaze(arr, x + 1, y, n, Solarr))
+		{
+			return true;
+		}
+		if (ratinMaze(arr, x, y+1, n, Solarr))
+		{
+			return true;
+		}
+		Solarr[x][y] = 0;   //backtracking
+		return false;
+	}
+	return false;
 }
 
-// Driver code
 int main()
 {
-	
-	int n = 4;
-	bool graph[n][n] = {
-	{ 0, 1, 1, 1 },
-	{ 1, 0, 1, 0 },
-	{ 1, 1, 0, 1 },
-	{ 1, 0, 1, 0 }};
-	int m = 3; // Number of colors
+	int n;
+	cin>>n;
 
-		
-	
-	vector<node> nodes(n + 1);
-
-	// Add edges to each node as per given input
+	int** arr = new int*[n];
 	for (int i = 0; i < n; i++)
 	{
-		for(int j =0;j<n;j++)
-		{
-			if(graph[i][j])
-			{
-				// Connect the undirected graph
-				nodes[i].edges.insert(i);
-				nodes[j].edges.insert(j);
-			}
-		}
+		arr[i] = new int[n];
 	}
-
-		// Display final answer
-		cout << canPaint(nodes, n, m);
-		cout << "\n";
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < n; j++)
+		{
+			cin>>arr[i][j];
+		}
+		
+	}
+	int** Solarr = new int*[n];
+	for (int i = 0; i < n; i++)
+	{
+		Solarr[i] = new int[n];
+		for (int j = 0; j < n; j++)
+		{
+			Solarr[i][j] =0;
+		}
+		
+	}
+	if (ratinMaze(arr,0,0,n,Solarr))
+	{
+		for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < n; j++)
+		{
+			cout<<Solarr[i][j]<<" ";
+		}cout<<endl;
+		
+	}
+	}
 	
+
 	return 0;
 }
