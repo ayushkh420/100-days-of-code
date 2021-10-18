@@ -18,6 +18,7 @@ bool ratinMaze(int **arr, int x, int y, int n, int **Solarr)
 {
 	if (x==n-1 && y==n-1)
 	{
+
 		Solarr[x][y] = 1;
 		return true;
 	}
