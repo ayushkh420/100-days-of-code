@@ -31,8 +31,6 @@ int main(){
     }
     cout<<str<<endl;
 
-    // **USING FUNCTION**
-
     transform(str.begin(), str.end(),str.begin(), ::toupper);
     cout<<str<<endl;
     // lower case
