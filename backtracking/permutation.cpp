@@ -1,4 +1,4 @@
-// return all possible permutation
+// return all possible permutations
 
 #include<iostream>
 using namespace std;
