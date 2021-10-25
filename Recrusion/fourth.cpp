@@ -10,9 +10,7 @@ void tower(int n, char sourcePole,
 if(0 == n)
 	return;
 
-// Move first n-1 disks from source pole
-// to auxiliary pole using destination as
-// temporary pole
+
 tower(n - 1, sourcePole, auxiliaryPole,
 	destinationPole);
 
